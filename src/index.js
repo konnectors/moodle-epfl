@@ -128,6 +128,7 @@ class EpflConnector extends CookieKonnector {
   }
 
   async login(fields) {
+    await this.deactivateAutoSuccessfulLogin()
     await this.request.get('https://moodle.epfl.ch/')
     let $ = await this.request.get('https://moodle.epfl.ch/login/index.php')
     const requestkey = $('#requestkey').val()
@@ -145,6 +146,7 @@ class EpflConnector extends CookieKonnector {
     if ($.html().includes('Authentification invalide')) {
       throw new Error(errors.LOGIN_FAILED)
     }
+    await this.notifySuccessfulLogin()
   }
 
   getRegions($) {
