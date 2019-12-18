@@ -6,6 +6,8 @@ env:
   - DEPLOY_REPOSITORY="git@github.com:konnectors/moodle-epfl.git"
   # REGISTRY_TOKEN(editor=cozy, app=moodle-epfl)
   - secure: 2sbm1oYI6E8dF68Mhs4DHz6760B+5ohas3o+Vq/h8GnXuosYiJ3MtCzsNRu7EGMwrQyyypcqeEyuTZLsZNWepSz/6Zksdz0CurxMDVs8N/+rRTj8xBe4x8mcoz9Zvp5+GB3NN0q9EW4YWEHlA5Ou+CSjSj0FyzLLHrx3LE0Ep0d0PjVYWamWwcUkbxN3jmPZPojPKt2LAbtOgqDbZ/tHrw3mBHPE0mI8g1FrUbcnTMXK5jFtYCLp+gVTNWvvRNlkgL233KR6GFuLmzwVVl6vt4v+cWsA3JUzsQh7iaFIT83TGXNNB1agsmAT7ybhDwdIWx87uzSLQrR6vrNd4I9yYIxp552x/jR+p6EIFA6hVfM6qafUeifdlDpNUSdF8fkYZJqY3a1haDq3+Uvftx/meZTD7SJ18E6g4un5WkJR0YrOnr+uXJlvpFaQ4tTV82refvqt5wdt6GO50IP+YjX7Yny8NUa3xADWf6rRuA3xNTXMXXUdOv8b7m8MVS72Y/x3AJWQ4/hj/V41dORI4nuOSX3EEC0/HBGbvozlzjLDvZXeu11kKazZ9vYahZwEhkw+b8u5F5xZa6awPJ6jBtV35RLsnPWLe5F4xES/GD29QXXUhzgjvA8aB3FjaH7lgRAe3WMc8p2g79q+Uf0xDRAiXwAudEba2/AHJbjVQNccHHI=
+  # MATTERMOST_HOOK_URL
+  - secure: X4Z1yFItOj97U4dL5riYoY8DdB/WVOzp9Tr+X5WwcuO3F+CJFiN5KLELnQu/48GLNrcuztKBuQ56o6g4DzfOPkd19K+jUGuBx/Mv4RmheYRqc1BMObFAJXpVZxox5dGNqKFlZgNP5slutWeXWLKn3Yc3TtMUKAq0KNUrfXHI3fbM0UZvD3+kB4Un8ZDc3HqKcoD0nZfLwswX8g8h1aDZAWefwJhXunY3PDICgkTVqjZuYPxcUbRAtRteZ9ISK4kv4Kfo5Q1LfahtiC9Z6bdA4GtKlvOm3Kc+e1lUxv4clvJEgTRY3uHi7cbX53QUEsevYqaxirFPZJpt+MBix0/LelP/s98IT/mmbkTYjUQtC9Y+DuHdNKLLEA4hCB8OFmilKlSIqPKSG8E0HPd9NF1ltDfvhsc+8tOVubPBKyr+b+solMp0OUEWpP3YHxJ+eTbnFKm+FAbOy96qAwRaQsVT+9KNnGcD4W6I+Tvp7C7gLyV+rXuF+3US9cU59i2TtJ8EzsjUR9tZ/fRSbpT7iiI30g/+ijuQ9SexJdtmYHfO5xwJYlUVGIouT+zk84PEM/dv9lE1IKRg3bgzeLkiPodo4gaI41+TXP8wdcKGhJRBlMp8w3tm0/1xwyQFPJbAaz1NnZeKjCK8Ty6COGXcpj/QEgfZ8G4scH83NUNpct7cOV8=
 cache:
   yarn: true
   directories:
@@ -25,7 +27,7 @@ deploy:
     branch: master
 - provider: script
   skip-cleanup: true
-  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish --postpublish mattermost
   on:
     tags: true
 before_install:
