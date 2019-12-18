@@ -1,4 +1,4 @@
-const { CookieKonnector, scrape, log } = require('cozy-konnector-libs')
+const { CookieKonnector, scrape, log, errors } = require('cozy-konnector-libs')
 
 const TIMEOUT = Date.now() + 4 * 60 * 1000 // 4 minutes by default since the stack allows 5 minutes
 
@@ -141,6 +141,10 @@ class EpflConnector extends CookieKonnector {
         }
       }
     )
+
+    if ($.html().includes('Authentification invalide')) {
+      throw new Error(errors.LOGIN_FAILED)
+    }
   }
 
   getRegions($) {
