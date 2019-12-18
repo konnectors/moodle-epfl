@@ -1,0 +1,72 @@
+{
+  "version": "0.1.0",
+  "name": "EPFL",
+  "type": "konnector",
+  "language": "node",
+  "icon": "icon.png",
+  "slug": "moodle-epfl",
+  "source": "git@github.com:konnectors/moodle-epfl.git",
+  "editor": "Cozy",
+  "vendor_link": "https://moodle.epfl.ch",
+  "categories": [
+    "education"
+  ],
+  "fields": {
+    "login": {
+      "type": "text"
+    },
+    "password": {
+      "type": "password"
+    },
+    "advancedFields": {
+      "folderPath": {
+        "advanced": true,
+        "isRequired": false
+      }
+    }
+  },
+  "data_types": [
+    "document"
+  ],
+  "screenshots": [],
+  "permissions": {
+    "files": {
+      "type": "io.cozy.files"
+    },
+    "accounts": {
+      "type": "io.cozy.accounts"
+    }
+  },
+  "developer": {
+    "name": "Cozy Cloud",
+    "url": "https://cozy.io"
+  },
+  "langs": ["fr", "en"],
+  "locales": {
+    "fr": {
+      "short_description": "Récupère vos documents et devoirs depuis le site de l'EPFL",
+      "long_description": "Récupère vos documents et devoirs depuis le site de l'EPFL",
+      "permissions": {
+        "files": {
+          "description": "Utilisé pour sauvegarder les fichiers"
+        },
+        "accounts": {
+          "description": "Utilisé pour obtenir les données du compte"
+        }
+      }
+    },
+    "en": {
+      "short_description": "Collect data from EPFL website",
+      "long_description": "Collect data from EPFL website",
+      "permissions": {
+        "files": {
+          "description": "Required to save the files"
+        },
+        "accounts": {
+          "description": "Required to get the account's data"
+        }
+      }
+    }
+  },
+  "manifest_version": "2"
+}
